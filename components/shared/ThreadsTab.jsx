@@ -1,9 +1,9 @@
-import { fetchUserPost } from "../../lib/actions/user.actions.js";
+import { fetchUserPosts } from "../../lib/actions/user.actions.js";
 import { redirect } from "next/navigation";
 import ThreadCard from "../cards/ThreadCard";
 
 const ThreadsTab = async ({ currentUserId, accountId, accountType }) => {
-  let result = await fetchUserPost(accountId);
+  let result = await fetchUserPosts(accountId);
 
   if (!result) redirect("/");
 
@@ -24,8 +24,8 @@ const ThreadsTab = async ({ currentUserId, accountId, accountType }) => {
                   image: thread.author.image,
                   id: result.author.id,
                 }
-          } // TODO:
-          community={thread.community} // TODO:
+          }
+          community={thread.community}
           createdAt={thread.createdAt}
           comments={thread.children}
         />

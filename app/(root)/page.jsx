@@ -19,7 +19,7 @@ const Home = async () => {
               <ThreadCard
                 key={post._id}
                 id={post._id}
-                currentUser={user?.id}
+                currentUserId={user?.id}
                 parentId={post.parentId}
                 content={post.text}
                 author={post.author}

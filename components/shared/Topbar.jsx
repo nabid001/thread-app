@@ -1,14 +1,15 @@
 import {
-  OrganizationSwitcher,
   SignOutButton,
   SignedIn,
   UserButton,
+  currentUser,
 } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { dark } from "@clerk/themes";
 
-const Topbar = () => {
+const Topbar = async () => {
+  const user = await currentUser();
+  // console.log(user);
   return (
     <nav className="topbar">
       <Link href="/" className="flex items-center gap-4">
@@ -32,7 +33,8 @@ const Topbar = () => {
           </SignedIn>
         </div>
 
-        <OrganizationSwitcher />
+        <UserButton />
+        <h3 className="text-light-1">{user?.username}</h3>
       </div>
     </nav>
   );
